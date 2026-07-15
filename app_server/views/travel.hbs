@@ -15,6 +15,15 @@
 					<div>
 						<div class="body">
 							<h1>Travel</h1>
+							 {{#each trips}}
+							<ul>
+								<li>
+									<a href="/travel"><img src="/images/{{this.image}}" alt="{{this.name}}"></a>
+									<h2>{{this.name}}</h2>
+									<p>{{this.description}}</p>
+								</li>
+								</ul>
+								{{/each}}
 							<ul id="sites">
 								<li>
 									<a href=“travel.html"><img src="images/reef1.jpg" alt="Img"></a>
