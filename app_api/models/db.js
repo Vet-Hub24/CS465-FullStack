@@ -34,10 +34,9 @@ if (process.platform === 'win32') {
 }
 
 // Configure for graceful shutdown
-const gracefulShutdown = msg => {
-  mongoose.connection.close(() => {
-    console.log(`Mongoose disconnected through ${msg}`);
-  });
+const gracefulShutdown = async msg => {
+  await mongoose.connection.close();
+  console.log(`Mongoose disconnected through ${msg}`);
 };
 
 // Shutdown invoked by nodemon signal
