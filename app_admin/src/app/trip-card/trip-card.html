@@ -1,0 +1,31 @@
+<div class="card h-100">
+  <img
+    class="card-img-top"
+    [src]="'http://localhost:3000/images/' + trip.image"
+    [alt]="trip.name"
+  >
+
+  <div class="card-body">
+    <h5 class="card-title">{{ trip.name }}</h5>
+
+    <p class="card-text">
+      <strong>Code:</strong> {{ trip.code }}<br>
+      <strong>Length:</strong> {{ trip.length }}<br>
+      <strong>Start:</strong> {{ trip.start | date }}<br>
+      <strong>Resort:</strong> {{ trip.resort }}<br>
+      <strong>Price:</strong> {{ trip.perPerson }}
+    </p>
+
+    <p class="card-text">
+      {{ trip.description }}
+    </p>
+
+    <a class="btn btn-warning me-2" [routerLink]="['/edit', trip.code]">
+      Edit
+    </a>
+
+    <button class="btn btn-danger" type="button" (click)="onDelete()">
+      Delete
+    </button>
+  </div>
+</div>
