@@ -3,8 +3,16 @@
     <a class="navbar-brand" routerLink="/">Travlr Getaways Admin</a>
 
     <div class="navbar-nav">
-      <a class="nav-link" routerLink="/">Trip Listing</a>
-      <a class="nav-link" routerLink="/add">Add Trip</a>
+      <a class="nav-link" routerLink="/" *ngIf="authenticationService.isLoggedIn()">Trip Listing</a>
+      <a class="nav-link" routerLink="/add" *ngIf="authenticationService.isLoggedIn()">Add Trip</a>
+      <a class="nav-link" routerLink="/login" *ngIf="!authenticationService.isLoggedIn()">Login</a>
+      <button
+        class="btn btn-outline-light ms-2"
+        type="button"
+        *ngIf="authenticationService.isLoggedIn()"
+        (click)="logout()">
+        Logout
+      </button>
     </div>
   </div>
 </nav>

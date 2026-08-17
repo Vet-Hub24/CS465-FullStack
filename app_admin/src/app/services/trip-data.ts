@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { Trip } from '../data/trip';
+import { AuthenticationService } from './authentication';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,16 @@ import { Trip } from '../data/trip';
 export class TripDataService {
   private apiBaseUrl = 'http://localhost:3000/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authenticationService: AuthenticationService
+  ) {}
+
+  private getAuthHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      Authorization: `Bearer ${this.authenticationService.getToken()}`
+    });
+  }
 
   getTrips(): Observable<Trip[]> {
     return this.http.get<Trip[]>(`${this.apiBaseUrl}/trips`);
@@ -20,14 +31,25 @@ export class TripDataService {
   }
 
   addTrip(trip: Trip): Observable<Trip> {
-    return this.http.post<Trip>(`${this.apiBaseUrl}/trips`, trip);
+    return this.http.post<Trip>(
+      `${this.apiBaseUrl}/trips`,
+      trip,
+      { headers: this.getAuthHeaders() }
+    );
   }
 
   updateTrip(tripCode: string, trip: Trip): Observable<Trip> {
-    return this.http.put<Trip>(`${this.apiBaseUrl}/trips/${tripCode}`, trip);
+    return this.http.put<Trip>(
+      `${this.apiBaseUrl}/trips/${tripCode}`,
+      trip,
+      { headers: this.getAuthHeaders() }
+    );
   }
 
   deleteTrip(tripCode: string): Observable<any> {
-    return this.http.delete(`${this.apiBaseUrl}/trips/${tripCode}`);
+    return this.http.delete(
+      `${this.apiBaseUrl}/trips/${tripCode}`,
+      { headers: this.getAuthHeaders() }
+    );
   }
 }
