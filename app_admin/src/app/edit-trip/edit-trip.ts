@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -6,9 +7,10 @@ import { TripDataService } from '../services/trip-data';
 
 @Component({
   selector: 'app-edit-trip',
-  imports: [FormsModule, RouterLink],
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './edit-trip.html',
-  styleUrl: './edit-trip.css'
+  styleUrls: ['./edit-trip.css']
 })
 export class EditTrip implements OnInit {
   message = '';

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -6,9 +7,10 @@ import { TripDataService } from '../services/trip-data';
 
 @Component({
   selector: 'app-add-trip',
-  imports: [FormsModule, RouterLink],
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './add-trip.html',
-  styleUrl: './add-trip.css'
+  styleUrls: ['./add-trip.css']
 })
 export class AddTrip {
   message = '';

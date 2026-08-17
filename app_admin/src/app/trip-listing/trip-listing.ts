@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Trip } from '../data/trip';
@@ -6,9 +7,10 @@ import { TripCard } from '../trip-card/trip-card';
 
 @Component({
   selector: 'app-trip-listing',
-  imports: [RouterLink, TripCard],
+  standalone: true,
+  imports: [CommonModule, RouterLink, TripCard],
   templateUrl: './trip-listing.html',
-  styleUrl: './trip-listing.css'
+  styleUrls: ['./trip-listing.css']
 })
 export class TripListing implements OnInit {
   trips: Trip[] = [];
@@ -20,14 +22,12 @@ export class TripListing implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('TripListing loaded');
     this.loadTrips();
   }
 
   loadTrips(): void {
     this.tripDataService.getTrips().subscribe({
       next: (trips: Trip[]) => {
-        console.log('Trips loaded:', trips);
         this.trips = trips;
         this.message = '';
         this.changeDetector.detectChanges();

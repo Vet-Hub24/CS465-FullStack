@@ -1,13 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { DatePipe } from '@angular/common';
 import { Trip } from '../data/trip';
 
 @Component({
   selector: 'app-trip-card',
-  imports: [RouterLink, DatePipe],
+  standalone: true,
+  imports: [CommonModule, RouterLink],
   templateUrl: './trip-card.html',
-  styleUrl: './trip-card.css'
+  styleUrls: ['./trip-card.css']
 })
 export class TripCard {
   @Input() trip!: Trip;
