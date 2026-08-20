@@ -1,0 +1,44 @@
+<div class="login-shell">
+  <div class="login-copy">
+    <span class="eyebrow">Secure administration</span>
+    <h1>Travlr Getaways</h1>
+    <p>Sign in to manage trip inventory through the protected REST API.</p>
+  </div>
+
+  <div class="card login-card shadow-sm">
+    <div class="card-body p-4">
+      <h2 class="h4 mb-3">Administrator access</h2>
+
+      <div *ngIf="message" class="alert alert-danger" role="alert">
+        {{ message }}
+      </div>
+
+      <form #loginForm="ngForm" class="row g-3" novalidate>
+        <div class="col-12">
+          <label class="form-label" for="name">Name <span class="text-muted">(required only to register)</span></label>
+          <input id="name" class="form-control" name="name" [(ngModel)]="credentials.name" autocomplete="name">
+        </div>
+
+        <div class="col-12">
+          <label class="form-label" for="email">Email</label>
+          <input id="email" class="form-control" name="email" type="email" [(ngModel)]="credentials.email" autocomplete="username" required>
+        </div>
+
+        <div class="col-12">
+          <label class="form-label" for="password">Password</label>
+          <input id="password" class="form-control" name="password" type="password" [(ngModel)]="credentials.password" minlength="8" autocomplete="current-password" required>
+          <div class="form-text">Use at least 8 characters.</div>
+        </div>
+
+        <div class="col-12 d-flex flex-wrap gap-2">
+          <button class="btn btn-primary" type="button" (click)="onLoginSubmit()" [disabled]="loginForm.invalid || isSubmitting">
+            {{ isSubmitting ? 'Please wait…' : 'Sign in' }}
+          </button>
+          <button class="btn btn-outline-secondary" type="button" (click)="onRegisterSubmit()" [disabled]="loginForm.invalid || isSubmitting">
+            Register admin
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

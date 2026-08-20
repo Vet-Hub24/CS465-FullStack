@@ -1,0 +1,4 @@
+.card { border: 0; border-radius: 1rem; overflow: hidden; box-shadow: 0 10px 30px rgba(23, 50, 77, .09); }
+.trip-visual { height: 145px; display: grid; place-items: center; background: linear-gradient(135deg, #0d8fb5, #17324d); color: rgba(255,255,255,.92); font-weight: 900; letter-spacing: .15em; }
+.card-title { color: #17324d; font-weight: 800; }
+.card-text { color: #596b7d; }

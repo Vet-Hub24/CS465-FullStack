@@ -1,0 +1,13 @@
+:root {
+  --travlr-navy: #17324d;
+  --travlr-blue: #087ea4;
+}
+body {
+  min-height: 100vh;
+  background: #f6f8fb;
+  color: var(--travlr-navy);
+}
+.navbar.bg-primary { background: linear-gradient(90deg, #0b5f7c, #087ea4) !important; }
+.card { border-color: #e5eaf0; }
+.btn { border-radius: .55rem; font-weight: 600; }
+.form-control { border-radius: .55rem; }

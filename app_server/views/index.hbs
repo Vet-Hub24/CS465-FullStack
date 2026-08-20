@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{> header}}
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Travel planning made simple</p>
+          <h1>Discover your next getaway.</h1>
+          <p class="hero-copy">
+            Browse travel packages backed by the Travlr REST API and MongoDB database.
+            Administrators can securely manage trip inventory through the Angular dashboard.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="/travel">Browse trips</a>
+            <a class="button secondary" href="http://localhost:4200" target="_blank" rel="noopener">Open admin</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun"></div>
+          <div class="wave wave-one"></div>
+          <div class="wave wave-two"></div>
+          <span>TRAVLR</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell feature-section">
+      <article class="feature-card">
+        <h2>Dynamic trip data</h2>
+        <p>Travel packages are loaded through the Express REST API instead of being hardcoded into the page.</p>
+      </article>
+      <article class="feature-card">
+        <h2>MongoDB persistence</h2>
+        <p>Mongoose models provide structured access to trip and administrator account data.</p>
+      </article>
+      <article class="feature-card">
+        <h2>Protected administration</h2>
+        <p>JWT authentication and Passport middleware protect trip creation, editing, and deletion.</p>
+      </article>
+    </section>
+  </main>
+
+  {{> footer}}
+</body>
+</html>
